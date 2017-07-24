@@ -1,17 +1,21 @@
 {
-  "name": "NodeChatSystem",
+  "name": "ChittyChat",
   "version": "0.0.1",
-  "description": "Realtime chat system for Tutorialzine.com",
+  "description": "Vulnerable Application Made for AppSec USA 2017",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dejanzelic/chittychat"
   },
   "keywords": [
     "node",
     "chat",
     "system"
   ],
-  "author": "Nikolay Anastasov",
+  "author": "Dejan Zelic",
   "license": "MIT",
   "dependencies": {
     "ejs": "^1.0.0",
