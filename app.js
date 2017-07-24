@@ -19,7 +19,20 @@ var io = require('socket.io').listen(app.listen(port));
 // Require the configuration and the routes files, and pass
 // the app and io as arguments to the returned functions.
 
+var mysql = require('mysql');
+var db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "MySuperPassword",
+  database: "chittychat"
+});
+db.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected to database!");
+});
+
+
 require('./config')(app, io);
-require('./routes')(app, io);
+require('./routes')(app, io, db);
 
 console.log('Your application is running on http://localhost:' + port);

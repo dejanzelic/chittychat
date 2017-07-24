@@ -159,9 +159,13 @@ $(function(){
 
 	socket.on('tooMany', function(data){
 
-		if(data.boolean && name.length === 0) {
+		if(data && name.length === 0) {
+			chatScreen.css('display','block');
+			data.forEach(function(element) {
+				createChatMessage(element.msg, element.user, element.avatar, moment())
+			})
+			//showMessage('tooManyPeople');
 
-			showMessage('tooManyPeople');
 		}
 	});
 

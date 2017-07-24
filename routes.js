@@ -9,7 +9,7 @@ var gravatar = require('gravatar');
 // Export a function, so that we can pass 
 // the app and io instances from the app.js file:
 
-module.exports = function(app,io){
+module.exports = function(app,io,db){
 
 	app.get('/', function(req, res){
 
@@ -20,7 +20,7 @@ module.exports = function(app,io){
 	app.get('/create', function(req,res){
 
 		// Generate unique id for the room
-		var id = Math.round((Math.random() * 1000000));
+		var id = Math.round((Math.random() * 100000));
 
 		// Redirect to the random room
 		res.redirect('/chat/'+id);
@@ -55,8 +55,13 @@ module.exports = function(app,io){
 				});
 			}
 			else if(room.length >= 2) {
-
-				chat.emit('tooMany', {boolean: true});
+				db.query("SELECT * from messages where room = ?;",
+				[data],
+				function(err, result){
+						chat.emit('tooMany', result);
+						console.log(data)
+						console.log(result);
+					});
 			}
 		});
 
@@ -132,6 +137,15 @@ module.exports = function(app,io){
 
 			// When the server receives a message, it sends it to the other person in the room.
 			socket.broadcast.to(socket.room).emit('receive', {msg: data.msg, user: data.user, img: data.img});
+			db.query("INSERT INTO messages (msg, user, room, avatar) VALUES (?, ?, ?, ?)",
+			[data.msg, data.user, socket.room, socket.avatar],
+			function(err, result){
+					console.log('User ' + data.user + ' sent: ' 
+						+ data.msg + ' in room: ' 
+						+ socket.room + " with avatar: " 
+						+ socket.avatar);
+				});
+			
 		});
 	});
 };
