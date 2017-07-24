@@ -568,6 +568,12 @@ footer {
 	margin: 0 auto;
 	background-color: white;
 }
+#disabled-chat {
+	width:700px;
+	margin: 0 auto;
+	background-color: white;
+	display: none;
+}
 
 #message {
 	width: 550px;

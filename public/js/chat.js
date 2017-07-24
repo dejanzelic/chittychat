@@ -36,7 +36,8 @@ $(function(){
 		chatForm = $("#chatform"),
 		textarea = $("#message"),
 		messageTimeSent = $(".timesent"),
-		chats = $(".chats");
+		chats = $(".chats"),
+		disabledChat = $("#disabled-chat");
 
 	// these variables hold images
 	var ownerImage = $("#ownerImage"),
@@ -164,7 +165,11 @@ $(function(){
 			data.forEach(function(element) {
 				createChatMessage(element.msg, element.user, element.avatar, moment())
 			})
-			//showMessage('tooManyPeople');
+			scrollToBottom();
+			disabledChat.css('display','block');
+			chatForm.css('display','none');
+			footer.fadeIn(1200)
+			//showMessage('tooManyPeople');ƒ
 
 		}
 	});
