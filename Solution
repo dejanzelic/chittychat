@@ -1,0 +1,7 @@
+1) To read other peoples messages, run:
+var socket = io();
+socket.on('tooMany', function(data){
+		console.log(data)
+	});
+
+for (i = 0; i < 100000; i++) { socket.emit('load', i);}

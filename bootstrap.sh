@@ -26,3 +26,10 @@ else
 	debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password MySuperPassword'
 	apt-get install -y mysql-server
 fi
+
+if mysql -u root -pMySuperPassword -e "USE chittychat"; then
+	echo "db already created"
+else
+	mysql -u root -pMySuperPassword < /vagrant/db_create.sql
+fi
+

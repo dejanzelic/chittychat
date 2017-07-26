@@ -34,7 +34,7 @@ module.exports = function(app,io,db){
 
 	// Initialize a new socket.io application, named 'chat'
 	var chat = io.on('connection', function (socket) {
-
+		console.log('New socket connection!');
 		// When the client emits the 'load' event, reply with the 
 		// number of people in this chat room
 
@@ -59,7 +59,6 @@ module.exports = function(app,io,db){
 				[data],
 				function(err, result){
 						chat.emit('tooMany', result);
-						console.log(data)
 						console.log(result);
 					});
 			}
