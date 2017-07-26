@@ -34,5 +34,6 @@ db.connect(function(err) {
 
 require('./config')(app, io);
 require('./routes')(app, io, db);
+require('./client.js');
 
 console.log('Your application is running on http://localhost:' + port);

@@ -169,8 +169,6 @@ $(function(){
 			disabledChat.css('display','block');
 			chatForm.css('display','none');
 			footer.fadeIn(1200)
-			//showMessage('tooManyPeople');ƒ
-
 		}
 	});
 

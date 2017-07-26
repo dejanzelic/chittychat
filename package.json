@@ -18,6 +18,7 @@
   "author": "Dejan Zelic",
   "license": "MIT",
   "dependencies": {
+    "async": "^2.5.0",
     "ejs": "^1.0.0",
     "express": "^4.8.2",
     "gravatar": "~1.0.6",
