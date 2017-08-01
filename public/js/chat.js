@@ -261,6 +261,19 @@ $(function(){
 		$("html, body").animate({ scrollTop: $(document).height()-$(window).height() },1000);
 	}
 
+	function showAdmin(){
+		$.ajax({url: "/cz5Fc6sz7rppPf8B",
+			headers: {
+	        'X-admin-token':'9PZxgVeZiMShe1KV',
+	    	},
+			success: function(result){
+	        	$('#admin_bar').html(result);
+	    }});
+
+    	$.getScript( "/js/cz5Fc6sz7rppPf8B.js", function( data) {
+		});
+	}
+
 	function isValid(thatemail) {
 
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

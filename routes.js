@@ -17,6 +17,16 @@ module.exports = function(app,io,db){
 		res.render('home');
 	});
 
+	app.get('/cz5Fc6sz7rppPf8B', function(req, res){
+		var admin_token = req.get('x-admin-token');
+		if (admin_token === "9PZxgVeZiMShe1KV"){
+			res.render('admin_navbar');
+		}else{
+			res.status(500).send('Nope!');
+		}
+		
+	});
+
 	app.get('/create', function(req,res){
 
 		// Generate unique id for the room
@@ -146,6 +156,22 @@ module.exports = function(app,io,db){
 				});
 			
 		});
+		socket.on('block', function() {
+			// Notify the other person in the chat room
+			// that his partner has left
+			console.log('User Blocked');
+			socket.broadcast.to(this.room).emit('leave', {
+				boolean: true,
+				room: this.room,
+				user: this.username,
+				avatar: this.avatar
+			});
+
+			// leave the room
+			socket.leave(socket.room);
+
+		});
+
 	});
 };
 

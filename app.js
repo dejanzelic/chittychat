@@ -28,6 +28,10 @@ var db = mysql.createConnection({
 });
 db.connect(function(err) {
   if (err) throw err;
+  db.query("DELETE FROM messages;",
+	function(err, result){
+		console.log('Database cleared');
+	});
   console.log("Connected to database!");
 });
 

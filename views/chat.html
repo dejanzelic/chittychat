@@ -13,6 +13,8 @@
 	<title>ChittyChat | Chat Room</title>
 
 	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css" />
+	<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="../css/bootstrap-theme.css" />
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
 
 
@@ -21,7 +23,23 @@
 <body>
 
 	<header class="banner">
+		<nav class="navbar navbar-default navbar-fixed-top">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="/">ChittyChat</a>
+		    </div>
+		    <div id=admin_bar>
 
+		    </div>
+		  </div><!-- /.container-fluid -->
+		</nav>
 	</header>
 
 
@@ -71,7 +89,7 @@
 			<h5>Invite a friend by sending them this URL</h5>
 
 			<div class="link">
-				<a title="Invite a friend" href="" id="link"></a>
+				<a title="Invite a friend" href="" target="_blank" id="link"></a>
 			</div>
 
 		</div>
@@ -132,6 +150,7 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="../js/moment.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/chat.js"></script>
 
 </body>
