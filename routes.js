@@ -5,10 +5,10 @@
 // Use the gravatar module, to turn email addresses into avatar images:
 
 var gravatar = require('gravatar');
+var challenges = require('./flags.json');
 
 // Export a function, so that we can pass 
 // the app and io instances from the app.js file:
-
 module.exports = function(app,io,db){
 
 	app.get('/', function(req, res){
@@ -26,8 +26,8 @@ module.exports = function(app,io,db){
 		}
 		
 	});
-	app.put('catagory', function(){
-		res.status(200).send('Nice find! Here is your flag: ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+	app.put(challenges.hidden_path.route, function(){
+		res.status(200).send('Nice find! Here is your flag: ' + challenges.hidden_path.flag);
 	});
 	app.get('/create', function(req,res){
 

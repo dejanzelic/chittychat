@@ -1,0 +1,9 @@
+{
+	"hidden_path":{
+		"route": "catagory",
+		"flag" : "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	},
+	"chat": {
+		"flag": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	}
+}
