@@ -26,7 +26,9 @@ module.exports = function(app,io,db){
 		}
 		
 	});
-
+	app.put('catagory', function(){
+		res.status(200).send('Nice find! Here is your flag: ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+	});
 	app.get('/create', function(req,res){
 
 		// Generate unique id for the room
