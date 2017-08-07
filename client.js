@@ -1,13 +1,13 @@
-async = require('async');
+var challenges = require('./flags.json');
 
 var socket1 = require('socket.io-client')('http://127.0.0.1:8080', { forceNew: true });
 var socket2 = require('socket.io-client')('http://127.0.0.1:8080', { forceNew: true });
 
-socket1.emit('load', 85748);
-socket2.emit('load', 85748);
+socket1.emit('load', challenges.chat.room);
+socket2.emit('load', challenges.chat.room);
 
-socket2.emit('login', {user: 'Taylor Swift', avatar: 'taylorswift7364@gmx.com', id: 85748});
-socket1.emit('login', {user: 'Katy Perry', avatar: 'katyperry6238@gmx.com', id: 85748});
+socket2.emit('login', {user: 'Taylor Swift', avatar: 'taylorswift7364@gmx.com', id: challenges.chat.room});
+socket1.emit('login', {user: 'Katy Perry', avatar: 'katyperry6238@gmx.com', id: challenges.chat.room});
 
 
 socket1.emit('msg', 
@@ -26,7 +26,7 @@ socket2.emit('msg',
 	img: 'http://www.gravatar.com/avatar/67ae964ebbf3a62ef1f9735b20250128?s=140&r=x&d=mm'});
 
 socket2.emit('msg', 
-	{msg: 'WTF KATY! Flag:ABCDEFGHIJKLMNOPQRSTUVWXYZ', 
+	{msg: 'WTF KATY! Flag: ' + challenges.chat.flag, 
 	user: 'Taylor Swift', 
 	img: 'http://www.gravatar.com/avatar/67ae964ebbf3a62ef1f9735b20250128?s=140&r=x&d=mm'});
 

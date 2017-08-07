@@ -20,15 +20,17 @@ module.exports = function(app,io,db){
 	app.get('/cz5Fc6sz7rppPf8B', function(req, res){
 		var admin_token = req.get('x-admin-token');
 		if (admin_token === "9PZxgVeZiMShe1KV"){
-			res.render('admin_navbar');
+			res.render('admin_navbar', {flag: challenges.admin.flag});
 		}else{
 			res.status(500).send('Nope!');
 		}
 		
 	});
+
 	app.put(challenges.hidden_path.route, function(){
 		res.status(200).send('Nice find! Here is your flag: ' + challenges.hidden_path.flag);
 	});
+
 	app.get('/create', function(req,res){
 
 		// Generate unique id for the room

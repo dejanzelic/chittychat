@@ -4,6 +4,10 @@
 		"flag" : "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	},
 	"chat": {
+		"room": "64832",
+		"flag": "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234234"
+	},
+	"admin": {
 		"flag": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	}
 }
