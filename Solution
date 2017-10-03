@@ -5,3 +5,11 @@ socket.on('tooMany', function(data){
 	});
 
 for (i = 0; i < 100000; i++) { socket.emit('load', i);}
+
+
+var socket = io();
+socket.on('tooMany', function(data){
+		console.log(data)
+	});
+
+for (i = 0; i < 10000; i++) { socket.emit('load', i);}

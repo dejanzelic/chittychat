@@ -6,7 +6,7 @@
 
 var gravatar = require('gravatar');
 var challenges = require('./flags.json');
-
+console.log(challenges.hidden_path.route);
 // Export a function, so that we can pass 
 // the app and io instances from the app.js file:
 module.exports = function(app,io,db){
@@ -27,14 +27,14 @@ module.exports = function(app,io,db){
 		
 	});
 
-	app.put(challenges.hidden_path.route, function(){
+	app.put("/" + challenges.hidden_path.route, function(req, res){
 		res.status(200).send('Nice find! Here is your flag: ' + challenges.hidden_path.flag);
 	});
 
 	app.get('/create', function(req,res){
 
 		// Generate unique id for the room
-		var id = Math.round((Math.random() * 100000));
+		var id = Math.round((Math.random() * 10000));
 
 		// Redirect to the random room
 		res.redirect('/chat/'+id);
@@ -53,7 +53,14 @@ module.exports = function(app,io,db){
 		// number of people in this chat room
 
 		socket.on('load',function(data){
-
+			db.query("SELECT * from messages where room = ?;",
+				[data],
+				function(err, result){
+					if (result.length != 0){
+						chat.emit('tooMany', result);
+						console.log(result);
+					}
+			});
 			var room = findClientsSocket(io,data);
 			if(room.length === 0 ) {
 
@@ -69,12 +76,7 @@ module.exports = function(app,io,db){
 				});
 			}
 			else if(room.length >= 2) {
-				db.query("SELECT * from messages where room = ?;",
-				[data],
-				function(err, result){
-						chat.emit('tooMany', result);
-						console.log(result);
-					});
+
 			}
 		});
 

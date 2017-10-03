@@ -1,10 +1,10 @@
 {
 	"hidden_path":{
-		"route": "catagory",
+		"route": "category",
 		"flag" : "flag{ILikeToPlayHideAndSeek}"
 	},
 	"chat": {
-		"room": "64832",
+		"room": "6483",
 		"flag": "flag{KatyPerryCanBeAPoopyHead}"
 	},
 	"admin": {
