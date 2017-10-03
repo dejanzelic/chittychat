@@ -1,2 +1,0 @@
-#/bin/bash
-aws ec2 create-tags --resources $( aws ec2 run-instances --image-id ami-cd0f5cb6 --count 1 --instance-type t2.micro --key-name appsecusa --security-group-ids sg-2ad1395a --iam-instance-profile Name="appsecusa-ctf" --user-data file://../bootstrap.sh | jq -r ".Instances[0].InstanceId" ) --tags "Key=Name,Value=AppSec USA Chitty Chat"
